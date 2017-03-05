@@ -1,49 +1,25 @@
-This is your new Play application
-=================================
+#Play Assignment
 
-This file will be packaged with your application when using `activator dist`.
+You need to design Login/Signup Application. The Application will have the following pages :
 
-There are several demonstration files available in this template.
+- Welcome/Index Page with Sign Up and SignIn Links/Buttons 
+- SignIn Page
+- SignUp Page : After Successful signUp redirect to the Profile Page.
+- Profile Display Page : This page should be displayed after SignIn and should display the user          
+                                      details. It should have a logout button to sign out and redirect to     
+                                      welcome page after logout.
 
-Controllers
-===========
-
-- HomeController.scala:
-
-  Shows how to handle simple HTTP requests.
-
-- AsyncController.scala:
-
-  Shows how to do asynchronous programming when handling a request.
-
-- CountController.scala:
-
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
-
-Components
-==========
-
-- Module.scala:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- Counter.scala:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- ApplicationTimer.scala:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-Filters
-=======
-
-- Filters.scala:
-
-  Creates the list of HTTP filters used by your application.
-
-- ExampleFilter.scala
-
-  A simple filter that adds a header to every response.
+The following things should be taken care of :
+1. App should have a main / index page containing few information and a signup and sign in page.
+2. Sign-up page should have a form having normal information like first name(mandatory),middle name(optional),last name(mandatory), username, password, re-enter password, mobile number(10 digits), gender(radio or drop down), age(limit it to 18 to 75), hobbies (multiple select box), etc.
+3. Each field of the form should be validated eg. password, re-enter password should be same should be validated, name should not have numbers or special characters. 
+4. Sign-in page should have a form having username / password.
+5. Should be using session and flash scope. Successful signin and signup should have a flashing message.
+6. Should be using reverse routing.
+7. Should have proper use of twirl templating.
+8. Should have proper use of model view controller.
+9. Database use is optional, you can mock check the username / password.
+10.The layout(UI) of the application should be consistent.
+11.The logout button should be available only after successful signIn/SignUp.
+12.Application should be designed using Bootstrap  
+13.Errors should be handled.
