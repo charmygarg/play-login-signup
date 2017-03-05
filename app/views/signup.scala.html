@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+    <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function profile() {
+            window.location="@routes.ProfileController.profile()";
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <h1 style="color:white; text-align:center;">Play SignUp Page</h1>
+    </div>
+</nav>
+<div>
+    <form action="@routes.SignUpController.signup" method="get" class="form-group col-xs-4" style="border: 1px solid #ccc; border-radius: 4px;">
+    <label for="fName">First Name:</label>
+    <input type="text" class="form-control" id="fName">
+
+    <label for="mName">Middle Name:</label>
+    <input type="text" class="form-control" id="mName">
+
+    <label for="lName">Last Name:</label>
+    <input type="text" class="form-control" id="lName">
+
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" id="username">
+
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password">
+
+    <label for="cPassword">Confirm Password:</label>
+    <input type="password" class="form-control" id="cPassword">
+
+    <label for="phone">Mobile No:</label>
+    <input type="number" class="form-control" id="phone">
+
+    <label>Gender:</label>
+    <label><input type="radio" name="mradio">Male</label>
+    <label><input type="radio" name="fradio">Female</label><br/>
+
+    <label for="age">Age:</label>
+    <input type="number" class="form-control" id="age">
+
+    <label>Hobby:</label>
+    <label class="checkbox-inline"><input type="checkbox" value="">Gaming</label>
+    <label class="checkbox-inline"><input type="checkbox" value="">Singing</label>
+    <label class="checkbox-inline"><input type="checkbox" value="">Programming</label><br/>
+
+    <button type="button" class="btn btn-primary btn-sm" onclick="profile()">Sign up</button>
+    </form>
+</div>
+</body>
+</html>
