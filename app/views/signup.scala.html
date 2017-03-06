@@ -9,54 +9,87 @@
     <script src="jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        function profile() {
-            window.location="@routes.ProfileController.profile()";
+        function validateForm() {
+            var password = signUpForm.password.value;
+            var cPassword = signUpForm.cPassword.value;
+            if(password != cPassword) {
+                alert("Password doesn't match");
+                signUpForm.password.value = " ";
+                signUpForm.cPassword.value = " ";
+                return false;
+            }
+
+            var age = signUpForm.user.age.value;
+            if(age < 18 || age > 75) {
+                alert("Age must be between 18 and 75");
+                signUpForm.user.age.value = " ";
+                return false;
+            }
+
+            var phone = (signUpForm.user.phone.value).length;
+            if(phone < 10 || phone > 10) {
+                alert("Not a valid phone number");
+                signUpForm.user.phone.value = " ";
+                return false;
+            }
+
         }
     </script>
+    <style>
+        form.form-group.col-xs-4 {
+            padding: 20px;
+            width: 400px;
+            display: block;
+            background: #FAFAFA;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <h1 style="color:white; text-align:center;">Play SignUp Page</h1>
-    </div>
-</nav>
-<div>
-    <form action="@routes.SignUpController.signup" method="get" class="form-group col-xs-4" style="border: 1px solid #ccc; border-radius: 4px;">
-    <label for="fName">First Name:</label>
-    <input type="text" class="form-control" id="fName">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <h1 style="color:white; text-align:center;">Play SignUp Page</h1>
+        </div>
+    </nav>
 
-    <label for="mName">Middle Name:</label>
-    <input type="text" class="form-control" id="mName">
+    <div class="container">
+    <form action="@routes.SignUpController.create()" name="signUpForm" method="post" class="form-group col-xs-6 form-horizontal"
+          style="border: 1px solid #ccc; border-radius: 4px;">
+        <label class="control-label" for="fName">First Name:</label>
+        <input type="text" class="form-control" id="fName" name="fName" placeholder="Enter First Name" required>
 
-    <label for="lName">Last Name:</label>
-    <input type="text" class="form-control" id="lName">
+        <label class="control-label" for="mName">Middle Name:</label>
+        <input type="text" class="form-control" id="mName" name="mName" placeholder="Enter Middle Name">
 
-    <label for="username">Username:</label>
-    <input type="text" class="form-control" id="username">
+        <label class="control-label" for="lName">Last Name:</label>
+        <input type="text" class="form-control" id="lName" name="lName" placeholder="Enter Last Name" required>
 
-    <label for="password">Password:</label>
-    <input type="password" class="form-control" id="password">
+        <label class="control-label" for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" required>
 
-    <label for="cPassword">Confirm Password:</label>
-    <input type="password" class="form-control" id="cPassword">
+        <label class="control-label" for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password" required>
 
-    <label for="phone">Mobile No:</label>
-    <input type="number" class="form-control" id="phone">
+        <label class="control-label" for="cPassword">Confirm Password:</label>
+        <input type="password" class="form-control" id="cPassword" name="cPassword" placeholder="Confirm Password" required>
 
-    <label>Gender:</label>
-    <label><input type="radio" name="mradio">Male</label>
-    <label><input type="radio" name="fradio">Female</label><br/>
+        <label class="control-label" for="phone">Mobile No:</label>
+        <input type="text" class="form-control" id="phone" name="user.phone" placeholder="Enter Mobile No.">
 
-    <label for="age">Age:</label>
-    <input type="number" class="form-control" id="age">
+        <label class="control-label">Gender:</label>
+        <label class="control-label"><input type="radio" value="male" name="user.gender" class="col-sm-offset-2">Male</label>
+        <label class="control-label"><input type="radio" value="female" name="user.gender" class="col-sm-offset-2">Female</label><br/>
 
-    <label>Hobby:</label>
-    <label class="checkbox-inline"><input type="checkbox" value="">Gaming</label>
-    <label class="checkbox-inline"><input type="checkbox" value="">Singing</label>
-    <label class="checkbox-inline"><input type="checkbox" value="">Programming</label><br/>
+        <label class="control-label" for="age">Age:</label>
+        <input type="number" class="form-control" id="age" name="user.age" placeholder="Enter Your Age" required>
 
-    <button type="button" class="btn btn-primary btn-sm" onclick="profile()">Sign up</button>
+        <label class="control-label">Hobby:</label>
+        <label class="checkbox-inline control-label"><input type="checkbox" value="gaming" name="user.hobby[]" class="col-sm-offset-2">Gaming</label>
+        <label class="checkbox-inline control-label"><input type="checkbox" value="singing" name="user.hobby[]" class="col-sm-offset-2">Dancing</label>
+        <label class="checkbox-inline control-label"><input type="checkbox" value="programming" name="user.hobby[]" class="col-sm-offset-2">Programming</label><br/>
+
+        <button type="submit" class="btn btn-primary btn-sm" onclick="validateForm()">Sign up</button>
     </form>
-</div>
+    </div>
 </body>
 </html>

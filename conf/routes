@@ -20,4 +20,6 @@ GET     /welcome                    controllers.WelcomeController.welcome
 
 GET     /signUp                     controllers.SignUpController.signup
 
-GET     /profile                    controllers.SignUpController.create
+POST     /                          controllers.SignUpController.create
+
+GET     /create                     controllers.LoginController.create

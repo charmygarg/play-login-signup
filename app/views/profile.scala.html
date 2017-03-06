@@ -1,3 +1,5 @@
+@(fName: String, mName: String, lName: String, username: String, phone: String, gender: String, age: Int, hobby: List[String])
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +20,38 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <h1 style="color:white; text-align:center;">Play Profile Page</h1>
+            <h3 style="color:white;">Hello @username,</h3>
+            <button type="button" class="btn btn-danger btn-sm" onclick="welcome()" style="text-align:right;">Logout</button>
         </div>
     </nav>
-    <button type="button" class="btn btn-danger btn-sm" onclick="welcome()">Logout</button>
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Hobbies</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>@fName</td>
+                <td>@mName</td>
+                <td>@lName</td>
+                <td>@username</td>
+                <td>@phone</td>
+                <td>@gender</td>
+                <td>@age</td>
+                <td>@for(index <- hobby){@index<span>,</span>}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>

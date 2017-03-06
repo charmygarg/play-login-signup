@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,15 @@
             window.location="@routes.ProfileController.profile()";
         }
     </script>
+    <style>
+        form.form-group.col-xs-4 {
+            padding: 20px;
+            width: 400px;
+            display: block;
+            background: #FAFAFA;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -20,14 +30,14 @@
             <h1 style="color:white; text-align:center;">Play Login Page</h1>
         </div>
     </nav>
-    <div class="form-group col-xs-4" style="border: 1px solid #ccc; border-radius: 4px; ">
+    <form action="@routes.LoginController.create()" class="form-group col-xs-4 form-horizontal" style="border: 1px solid #ccc; border-radius: 4px; ">
         <label for="usr">Username:</label>
-        <input type="text" class="form-control" id="usr">
+        <input type="text" class="form-control" id="usr" placeholder="Enter Username">
 
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd"><br/>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter Your Password"><br/>
 
         <button type="button" class="btn btn-primary btn-sm" onclick="profile()">Sign in</button>
-    </div>
+    </form>
 </body>
 </html>
