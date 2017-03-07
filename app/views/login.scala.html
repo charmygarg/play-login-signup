@@ -32,10 +32,10 @@
     </nav>
     <form action="@routes.LoginController.create()" class="form-group col-xs-4 form-horizontal" style="border: 1px solid #ccc; border-radius: 4px; ">
         <label for="usr">Username:</label>
-        <input type="text" class="form-control" id="usr" placeholder="Enter Username">
+        <input type="text" class="form-control" id="usr" name="username" placeholder="Enter Username">
 
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter Your Password"><br/>
+        <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter Your Password"><br/>
 
         <button type="button" class="btn btn-primary btn-sm" onclick="profile()">Sign in</button>
     </form>
