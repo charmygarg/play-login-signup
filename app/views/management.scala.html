@@ -1,5 +1,3 @@
-@(fName: String, mName: String, lName: String, username: String, password: String, phone: String, gender: String, age: Int, hobby: List[String],
-status: String, isEnable: Boolean))
 @(list: List[String])(implicit flash: Flash)
 
 <!DOCTYPE html>
@@ -17,8 +15,6 @@ status: String, isEnable: Boolean))
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <h1 style="color:white; text-align:center;">Play Management Page</h1>
-        <h3 style="color:white;">Hello @username,</h3>
-
     </div>
 </nav>
 <div>
@@ -28,7 +24,7 @@ status: String, isEnable: Boolean))
         <tr>
             <td>@index</td>
             <td><a href="@routes.ManagementController.enableUser(index)">Enable</a></td>
-            <td><a href="@routes.LoginController.disableUser(index)">Disable</a></td>
+            <td><a href="@routes.ManagementController.disableUser(index)">Disable</a></td>
         </tr>
         }
         </tbody>
