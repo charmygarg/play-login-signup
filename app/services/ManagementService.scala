@@ -19,10 +19,8 @@ class ManagementService @Inject() (cache: CacheApi) extends ManagementServiceTra
   val list = new ListBuffer[Person]() += Person("Charmy", "", "Garg", "charmygarg", "1234" , User("9897513530", "female", 22, List("Singing","Programming"),
   "normal", true ))
 
-  val getData = cache.get[ListBuffer[Person]]("Key").get
-
   def getList: List[String] = {
-    val userList = getData.map(_.username).toList
+    val userList = list.map(_.username).toList
     userList
   }
 

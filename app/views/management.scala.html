@@ -23,8 +23,8 @@
         @for(index <- list) {
         <tr>
             <td>@index</td>
-            <td><a href="@routes.ManagementController.enableUser(index)">Enable</a></td>
-            <td><a href="@routes.ManagementController.disableUser(index)">Disable</a></td>
+            <td><button type="submit" class="btn btn-warning btn-sm"><a href="@routes.ManagementController.enableUser(index)">Enable</a></button></td>
+            <td><button type="submit" class="btn btn-danger btn-sm"><a href="@routes.ManagementController.disableUser(index)">Disable</a></button></td>
         </tr>
         }
         </tbody>
