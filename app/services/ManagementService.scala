@@ -27,18 +27,12 @@ class ManagementService @Inject() (cache: CacheApi) extends ManagementServiceTra
   }
 
   def enableUser(username: String): Boolean = {
-    val enableList = getData.map {
-      case head if head.username == username => head.copy(isEnable = true)
-    }
-    cache.set("key", enableList)
+
     true
   }
 
   def disableUser(username: String): Boolean = {
-    val enableList = getData.map {
-      case head if head.username == username => head.copy(isEnable = false)
-    }
-    cache.set("key", enableList)
+
     true
   }
 

@@ -3,8 +3,9 @@ package controllers
 import models.{PersonLogin, Person, User}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.mvc.Controller
 
-class Mapping {
+class Mapping extends Controller{
 
   val person = Form(mapping(
     "fName" -> nonEmptyText,

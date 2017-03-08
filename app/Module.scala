@@ -25,6 +25,7 @@ class Module extends AbstractModule {
     bind(classOf[Counter]).to(classOf[AtomicCounter])
     bind(classOf[SignUpServiceTrait]).to(classOf[SignUpService])
     bind(classOf[ManagementServiceTrait]).to(classOf[ManagementService])
+    bind(classOf[TypeServiceTrait]).to(classOf[TypeService])
   }
 
 }
