@@ -18,7 +18,6 @@ class Mapping extends Controller{
       "gender" -> nonEmptyText,
       "age" -> number(min = 18, max = 75),
       "hobby" -> list(text),
-      "status" -> text,
       "isEnable" -> boolean
     )(User.apply)(User.unapply)
   )(Person.apply)(Person.unapply))

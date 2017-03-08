@@ -17,7 +17,7 @@ trait ManagementServiceTrait {
 class ManagementService @Inject() (cache: CacheApi) extends ManagementServiceTrait {
 
   val list = new ListBuffer[Person]() += Person("Charmy", "", "Garg", "charmygarg", "1234" , User("9897513530", "female", 22, List("Singing","Programming"),
-  "normal", true ))
+   true ))
 
   def getList: List[String] = {
     val userList = list.map(_.username).toList

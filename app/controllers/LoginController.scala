@@ -20,7 +20,7 @@ class LoginController @Inject() (cache: CacheApi) extends Controller{
       value => {
         val user = cache.get[models.Person](value.username)
         user match {
-          case Some(Person(fName, mName, lName, username, password, User(phone, gender, age, hobby, status, isEnable))) =>
+          case Some(Person(fName, mName, lName, username, password, User(phone, gender, age, hobby, isEnable))) =>
             if(password == MD5.hash(value.password) && isEnable == true)
               Redirect(routes.ProfileController.profile()).withSession(request.session + ("userSession" -> s"${value.username}"))
             else

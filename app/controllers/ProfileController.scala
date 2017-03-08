@@ -11,7 +11,7 @@ class ProfileController @Inject() (cache: CacheApi) extends Controller {
     val usrname = request.session.get("userSession").fold("fake")(x => x)
     val user = cache.get[Person](usrname)
     user match {
-      case Some(Person(fName, mName, lName, username, password, User(phone, gender, age, hobby, status, isEnable))) =>
+      case Some(Person(fName, mName, lName, username, password, User(phone, gender, age, hobby, isEnable))) =>
         Ok(views.html.profile(fName, mName, lName, username, password, phone, gender, age, hobby))
       case None => Redirect(routes.LoginController.login).flashing("success" -> "Please login")
     }
