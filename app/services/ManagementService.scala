@@ -24,14 +24,16 @@ class ManagementService @Inject() (cache: CacheApi) extends ManagementServiceTra
     userList
   }
 
-  def enableUser(username: String): Boolean = {
-
-    true
+  def enableUser(username: String): CacheApi = {
+    cache.set("isEnable",true)
+    println(cache.get("isEnable"))
+    cache
   }
 
-  def disableUser(username: String): Boolean = {
-
-    true
+  def disableUser(username: String): CacheApi = {
+    cache.set("isEnable",false)
+    println(cache.get("isEnable"))
+    cache
   }
 
 }
