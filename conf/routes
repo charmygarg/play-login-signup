@@ -23,3 +23,9 @@ GET     /signUp                     controllers.SignUpController.signup
 POST     /                          controllers.SignUpController.create
 
 GET     /create                     controllers.LoginController.create
+
+GET     /management                 controllers.ManagementController.management
+
+GET     /enable/:username           controllers.ManagementController.enableUser(username:String)
+
+GET     /disable/:username          controllers.ManagementController.disableUser(username:String)

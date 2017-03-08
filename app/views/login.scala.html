@@ -29,7 +29,7 @@
             <h1 style="color:white; text-align:center;">Play Login Page</h1>
         </div>
     </nav>
-    <form action="/create" class="form-group col-xs-4 form-horizontal" style="border: 1px solid #ccc; border-radius: 4px; " method="get">
+    <form action="@routes.LoginController.create()" class="form-group col-xs-4 form-horizontal" style="border: 1px solid #ccc; border-radius: 4px; " method="get">
         <label for="usr">Username:</label>
         <input type="text" class="form-control" id="usr" name="username" placeholder="Enter Username">
 

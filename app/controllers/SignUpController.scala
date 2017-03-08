@@ -1,13 +1,10 @@
 package controllers
 
 import javax.inject.Inject
-import play.api.cache._
 import play.api.mvc.{Action, Controller}
+import services.{SignUpService, MD5}
 
-/**
-  * Created by Charmy Garg on 04-Mar-17.
-  */
-class SignUpController @Inject() (cache: CacheApi) extends Controller{
+class SignUpController @Inject() (signUpService: SignUpService) extends Controller{
 
   val map = new Mapping
 
@@ -19,12 +16,9 @@ class SignUpController @Inject() (cache: CacheApi) extends Controller{
       map.person.bindFromRequest.fold(
         formWithErrors => Ok("value" + formWithErrors),
         value => {
-          val user = cache.get[models.Person](value.username)
-          user match {
-            case Some(data) => Redirect(routes.LoginController.login()).flashing("success" -> "Please login")
-            case None => cache.set(value.username, value)
-              Redirect(routes.ProfileController.profile()).withSession(request.session + ("userSession" -> s"${value.username}"))
-          }
+            val encrypt = value.copy(password = MD5.hash(value.password))
+            signUpService.setCache(encrypt)
+            Redirect(routes.ProfileController.profile()).withSession(request.session + ("userSession" -> s"${value.username}"))
         })
     }
 

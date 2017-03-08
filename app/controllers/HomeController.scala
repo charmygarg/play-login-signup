@@ -21,18 +21,4 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
-//  def login = Action {
-//    { implicit request =>
-//
-//      val email = request.body.asFormUrlEncoded.get("email")(0)
-//      val password = request.body.asFormUrlEncoded.get("password")(0)
-//
-//      loginForm.bindFromRequest.fold(
-//        errors => BadRequest(html.index(emailForm,errors,"Please enter valid username password")),
-//        contact => Redirect(routes.Application.home).withSession("email" -> email,"password" -> password)
-//      )
-//    }
-//  }
-
-
 }

@@ -4,9 +4,6 @@ import models.{PersonLogin, Person, User}
 import play.api.data.Form
 import play.api.data.Forms._
 
-/**
-  * Created by Charmy Garg on 07-Mar-17.
-  */
 class Mapping {
 
   val person = Form(mapping(
@@ -19,7 +16,9 @@ class Mapping {
       "phone" -> nonEmptyText,
       "gender" -> nonEmptyText,
       "age" -> number(min = 18, max = 75),
-      "hobby" -> list(text)
+      "hobby" -> list(text),
+      "status" -> text,
+      "isEnable" -> boolean
     )(User.apply)(User.unapply)
   )(Person.apply)(Person.unapply))
 

@@ -1,4 +1,5 @@
-@(fName: String, mName: String, lName: String, username: String, phone: String, gender: String, age: Int, hobby: List[String])
+@(fName: String, mName: String, lName: String, username: String, password: String, phone: String, gender: String, age: Int, hobby: List[String],
+status: String, isEnable: Boolean)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@
                 <th>Middle Name</th>
                 <th>Last Name</th>
                 <th>Username</th>
+                <th>Password</th>
                 <th>Phone</th>
                 <th>Gender</th>
                 <th>Age</th>
@@ -44,6 +46,7 @@
                 <td>@mName</td>
                 <td>@lName</td>
                 <td>@username</td>
+                <td>@password</td>
                 <td>@phone</td>
                 <td>@gender</td>
                 <td>@age</td>
