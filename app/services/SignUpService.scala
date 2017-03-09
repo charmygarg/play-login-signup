@@ -8,7 +8,7 @@ trait SignUpServiceTrait {
   def setCache(value: Person): Boolean
 }
 
-class SignUpService @Inject() (cache: CacheApi) extends SignUpServiceTrait{
+class SignUpService @Inject()(cache: CacheApi) extends SignUpServiceTrait{
 
   def setCache(value: Person) = {
     cache.set(value.username, value)
