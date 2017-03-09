@@ -35,4 +35,11 @@ class LoginController @Inject() (cache: CacheApi) extends Controller{
       })
   }
 
+  def jsRoutes = Action { implicit request =>
+    Ok(Routes.javascriptRouter("appRoutes")(
+      controllers.routes.javascript.LoginController.login,
+      controllers.routes.javascript.LoginController.create))
+      .as("text/javascript")
+  }
+
 }
