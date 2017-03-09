@@ -1,4 +1,4 @@
-@(list: List[String])(implicit flash: Flash)
+@(list: String)(implicit flash: Flash)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <script src="jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        alert(@flash.get("success").getOrElse(""))
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -20,13 +23,11 @@
 <div>
     <table class="table table-hover">
         <tbody>
-        @for(index <- list) {
         <tr>
-            <td>@index</td>
-            <td><button type="submit" class="btn btn-warning btn-sm"><a href="@routes.ManagementController.enableUser(index)">Enable</a></button></td>
-            <td><button type="submit" class="btn btn-danger btn-sm"><a href="@routes.ManagementController.disableUser(index)">Disable</a></button></td>
+            <td>@list</td>
+            <td><button type="submit" class="btn btn-warning btn-sm"><a href="@routes.ManagementController.enableUser(list)">Resume</a></button></td>
+            <td><button type="submit" class="btn btn-danger btn-sm"><a href="@routes.ManagementController.disableUser(list)">Suspend</a></button></td>
         </tr>
-        }
         </tbody>
     </table>
 </div>

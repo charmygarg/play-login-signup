@@ -11,6 +11,7 @@ import play.api.{Configuration, Environment}
 trait TypeServiceTrait {
   def getType: String
 }
+
 class TypeService @Inject() (environment: Environment, configuration: Configuration)extends TypeServiceTrait {
   def getType: String = {
     configuration.getString("user.type").fold("not found")(identity)

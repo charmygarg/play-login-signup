@@ -14,15 +14,15 @@ class ManagementController @Inject()(managementService: ManagementService) exten
     Ok(views.html.management(list))
   }
 
-  def enableUser(username:String) = Action{ implicit request=>
+  def enableUser(username: String) = Action{ implicit request=>
     managementService.enableUser(username)
-    Redirect(routes.LoginController.login()).flashing(
-      "success" -> "User enabled successfully")
+    Redirect(routes.ManagementController.management()).flashing(
+      "success" -> "User has been enabled")
   }
 
-  def disableUser(username:String) = Action{ implicit request=>
+  def disableUser(username: String) = Action{ implicit request=>
     managementService.disableUser(username)
-    Redirect(routes.LoginController.login()).flashing(
+    Redirect(routes.ManagementController.management()).flashing(
       "success" -> "User has been disabled")
   }
 

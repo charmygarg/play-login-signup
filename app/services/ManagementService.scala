@@ -11,29 +11,37 @@ import scala.collection.mutable.ListBuffer
 
 trait ManagementServiceTrait {
 
-  def getList: List[String]
+  def getList: String
+
+  def enableUser(username: String): Person
+
+  def disableUser(username: String): Person
 }
 
-class ManagementService @Inject() (cache: CacheApi) extends ManagementServiceTrait {
+class ManagementService @Inject()(cache: CacheApi) extends ManagementServiceTrait {
 
-  val list = new ListBuffer[Person]() += Person("Charmy", "", "Garg", "charmygarg", "1234" , User("9897513530", "female", 22, List("Singing","Programming"),
-   true ))
+  val person = Person("Charmy", "", "Garg", "charmygarg", "1234" , User("9897513530", "female", 22, List("Singing","Programming"), true ))
 
-  def getList: List[String] = {
-    val userList = list.map(_.username).toList
+  cache.set(person.username, person)
+  val list = cache.get[Person](person.username).get
+
+  def getList: String = {
+    val userList = list.username
     userList
   }
 
-  def enableUser(username: String): CacheApi = {
-    cache.set("isEnable",true)
-    println(cache.get("isEnable"))
-    cache
+  def enableUser(username: String): Person = {
+    val person: Person = cache.get[Person](username).get
+    val updatedUser = person.user.copy(isEnable = true)
+    val update = person.copy(user = updatedUser)
+    update
   }
 
-  def disableUser(username: String): CacheApi = {
-    cache.set("isEnable",false)
-    println(cache.get("isEnable"))
-    cache
+  def disableUser(username: String): Person = {
+    val person: Person = cache.get[Person](username).get
+    val updatedUser = person.user.copy(isEnable = false)
+    val update = person.copy(user = updatedUser)
+    update
   }
 
 }
