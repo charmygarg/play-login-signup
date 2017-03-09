@@ -1,20 +1,34 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
+@title = {
+    login page
+}
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
+@main(title) {
 
-    * @play20.welcome(message, style = "Scala")
-    *@
+
+@helper.form(action = routes.LoginController.login) {
+
+    <legend>@title</legend>
+
+    @inputText(
+    loginForm("email"), '_label -> "Email ",
+    '_help -> "Enter a valid email address."
+    )
+
+    @inputPassword(
+    loginForm("password"),
+    '_label -> "Password",
+    '_help -> "A password must be at least 6 characters. "
+    )
+
+<div class="actions">
+    <input type="submit" class="btn primary" value="Sign in ">
+    Or
+    <small><a href="@routes.Application.siginUpForm">Sign Up </a></small>
+
+
+</div>
+
+}
+
 }
