@@ -4,9 +4,8 @@ import javax.inject.Inject
 import models.{User, Person}
 import play.api.cache.CacheApi
 import play.api.mvc.{Action, Controller}
-import services.MD5
 
-class LoginController @Inject() (cache: CacheApi) extends Controller{
+class LoginController @Inject()(cache: CacheApi) extends Controller {
 
   val map = new Mapping
 
@@ -14,23 +13,23 @@ class LoginController @Inject() (cache: CacheApi) extends Controller{
     Ok(views.html.login())
   }
 
-  def create() = Action { implicit request =>
-    map.personLogin.bindFromRequest.fold(
-      formWithErrors => Ok("value" + formWithErrors),
+  def create = Action { implicit request =>
+    map.personLoginForm.bindFromRequest.fold(
+      formWithErrors => BadRequest("form with errors"),
       value => {
         val user = cache.get[models.Person](value.username)
         user match {
           case Some(Person(fName, mName, lName, username, pass, User(phone, gender, age, hobby, isEnable))) =>
-            if(pass == value.password) {
+            if (pass == value.password) {
               if (isEnable)
                 Redirect(routes.ProfileController.profile()).withSession(request.session + ("userSession" -> s"${value.username}"))
               else
-                Redirect(routes.LoginController.login()).flashing("success" -> "You have been blocked by user")
+                Redirect(routes.LoginController.login()).flashing("success" -> "You have been blocked by Admin")
             }
             else {
               Redirect(routes.LoginController.login()).flashing("success" -> "Username or Password is incorrect")
             }
-          case None=>  Redirect(routes.LoginController.login()).flashing("success" -> "Not a valid User")
+          case None => Redirect(routes.LoginController.login()).flashing("success" -> "Not a valid User")
         }
       })
   }

@@ -15,76 +15,68 @@ class RouterSpec extends PlaySpec with OneAppPerTest {
       route(app, FakeRequest(GET, "/boum")).map(status(_)) mustBe Some(NOT_FOUND)
     }
 
-    "respond to the login Action" in new App() {
+    "respond to the login Action" in {
       val Some(result) = route(app, FakeRequest(GET, "/login"))
       status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Login Page")
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play Login Page")
     }
 
-    "respond to the profile Action" in new App() {
+    "respond to the profile Action" in {
       val Some(result) = route(app, FakeRequest(GET, "/profile"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Profile Page")
+      status(result) mustBe SEE_OTHER
+      contentType(result) mustBe None
+      charset(result) mustBe None
+      contentAsString(result) must include("")
     }
 
-    "respond to the welcome Action" in new App() {
+    "respond to the welcome Action" in {
       val Some(result) = route(app, FakeRequest(GET, "/welcome"))
       status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Welcome Page")
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play Welcome Page")
     }
 
     "respond to the signUp Action" in new App() {
       val Some(result) = route(app, FakeRequest(GET, "/signUp"))
       status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play SignUp Page")
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play SignUp Page")
     }
 
-    "respond to the create of SignUpController Action Action" in new App() {
-      val Some(result) = route(app, FakeRequest(POST, "/"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play SignUp Page")
-    }
-
-    "respond to the create of LoginController Action" in new App() {
+    "respond to the create of LoginController Action" in {
       val Some(result) = route(app, FakeRequest(GET, "/create"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Login Page")
+      status(result) mustBe BAD_REQUEST
+      contentType(result) mustBe Some("text/plain")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("form with errors")
     }
 
     "respond to the create of ManagementController Action" in new App() {
       val Some(result) = route(app, FakeRequest(GET, "/management"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Management Page")
+      status(result) mustBe Some(OK)
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play Management Page")
     }
 
     "respond to the enable of ManagementController Action" in new App() {
       val Some(result) = route(app, FakeRequest(GET, "/enable/:username"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Management Page")
+      status(result) mustBe Some(OK)
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play Management Page")
     }
 
     "respond to the disable of ManagementController Action" in new App() {
       val Some(result) = route(app, FakeRequest(GET, "/disable/:username"))
-      status(result) mustBe OK
-      contentType(result) mustBe "text/html"
-      charset(result) mustBe "utf-8"
-      contentAsString(result) must contain("Play Management Page")
+      status(result) mustBe Some(OK)
+      contentType(result) mustBe Some("text/html")
+      charset(result) mustBe Some("utf-8")
+      contentAsString(result) must include("Play Management Page")
     }
   }
 

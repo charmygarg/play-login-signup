@@ -19,7 +19,7 @@ class ErrorHandler extends HttpErrorHandler {
       case 502 => Future.successful(Status(statusCode)("Bad Gateway"))
       case 503 => Future.successful(Status(statusCode)("Service Temporarily Unavailable"))
       case 504 => Future.successful(Status(statusCode)("Gateway Time-Out"))
-      case _=> Future.successful (Status (statusCode) ("Something went wrong!!"))
+      case _ => Future.successful(Status(statusCode)("Something went wrong!!"))
     }
   }
 

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/bootstrap.min.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-    <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned(" css/bootstrap.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned(" images/favicon.png")">
+    <script src="@routes.Assets.versioned(" javascripts/hello.js")" type="text/javascript"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <script src="jquery.min.js"></script>
@@ -14,46 +14,48 @@
         function welcome() {
             window.location="@routes.WelcomeController.welcome()";
         }
+
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <h1 style="color:white; text-align:center;">Play Profile Page</h1>
-            <h3 style="color:white;">Hello @username,</h3>
-            <button type="button" class="btn btn-danger btn-sm" onclick="welcome()" style="text-align:right;">Logout</button>
-        </div>
-    </nav>
-    <div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Phone</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Hobbies</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>@fName</td>
-                <td>@mName</td>
-                <td>@lName</td>
-                <td>@username</td>
-                <td>@password</td>
-                <td>@phone</td>
-                <td>@gender</td>
-                <td>@age</td>
-                <td>@for(index <- hobby){@index<span>,</span>}</td>
-            </tr>
-            </tbody>
-        </table>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <h1 style="color:white; text-align:center;">Play Profile Page</h1>
+        <h3 style="color:white;">Hello @username,</h3>
+        <button type="button" class="btn btn-danger btn-sm" onclick="welcome()" style="text-align:right;">Logout
+        </button>
     </div>
+</nav>
+<div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Hobbies</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@fName</td>
+            <td>@mName</td>
+            <td>@lName</td>
+            <td>@username</td>
+            <td>@password</td>
+            <td>@phone</td>
+            <td>@gender</td>
+            <td>@age</td>
+            <td>@for(index <- hobby){@index<span>,</span>}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

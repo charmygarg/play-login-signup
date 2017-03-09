@@ -5,9 +5,9 @@ import play.api.data.Form
 import play.api.data.Forms._
 import play.api.mvc.Controller
 
-class Mapping extends Controller{
+class Mapping extends Controller {
 
-  val person = Form(mapping(
+  val personSignUpForm = Form(mapping(
     "fName" -> nonEmptyText,
     "mName" -> text,
     "lName" -> nonEmptyText,
@@ -22,7 +22,7 @@ class Mapping extends Controller{
     )(User.apply)(User.unapply)
   )(Person.apply)(Person.unapply))
 
-  val personLogin = Form(mapping(
+  val personLoginForm = Form(mapping(
     "username" -> nonEmptyText,
     "password" -> nonEmptyText)
   (PersonLogin.apply)(PersonLogin.unapply))

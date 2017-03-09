@@ -26,6 +26,8 @@ GET     /create                     controllers.LoginController.create
 
 GET     /management                 controllers.ManagementController.management
 
+GET     /logout                     controllers.ManagementController.logout
+
 GET     /enable/:username           controllers.ManagementController.enableUser(username:String)
 
 GET     /disable/:username          controllers.ManagementController.disableUser(username:String)
