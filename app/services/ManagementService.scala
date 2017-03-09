@@ -31,15 +31,13 @@ class ManagementService @Inject()(cache: CacheApi) extends ManagementServiceTrai
   }
 
   def enableUser(username: String): Person = {
-    val person: Person = cache.get[Person](username).get
-    val updatedUser = person.user.copy(isEnable = true)
+    val updatedUser = list.user.copy(isEnable = true)
     val update = person.copy(user = updatedUser)
     update
   }
 
   def disableUser(username: String): Person = {
-    val person: Person = cache.get[Person](username).get
-    val updatedUser = person.user.copy(isEnable = false)
+    val updatedUser = list.user.copy(isEnable = false)
     val update = person.copy(user = updatedUser)
     update
   }
