@@ -20,9 +20,9 @@ class LoginController @Inject() (cache: CacheApi) extends Controller{
       value => {
         val user = cache.get[models.Person](value.username)
         user match {
-          case Some(Person(fName, mName, lName, username, password, User(phone, gender, age, hobby, isEnable))) =>
-            if(password == MD5.hash(value.password)) {
-              if (isEnable == true)
+          case Some(Person(fName, mName, lName, username, pass, User(phone, gender, age, hobby, isEnable))) =>
+            if(pass == value.password) {
+              if (isEnable)
                 Redirect(routes.ProfileController.profile()).withSession(request.session + ("userSession" -> s"${value.username}"))
               else
                 Redirect(routes.LoginController.login()).flashing("success" -> "You have been blocked by user")

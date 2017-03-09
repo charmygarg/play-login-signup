@@ -12,6 +12,7 @@ class SignUpService @Inject()(cache: CacheApi) extends SignUpServiceTrait{
 
   def setCache(value: Person) = {
     cache.set(value.username, value)
+    //cache.remove(value.username)
     true
   }
 
