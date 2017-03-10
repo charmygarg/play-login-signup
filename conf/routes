@@ -20,6 +20,8 @@ POST     /                          controllers.SignUpController.create
 
 GET     /create                     controllers.LoginController.create
 
+GET     /exists                     controllers.LoginController.isUsernameExists
+
 GET     /assets/js/routes           controllers.LoginController.jsRoutes()
 
 # Map static resources from the /public folder to the /assets URL path

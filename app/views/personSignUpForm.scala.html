@@ -7,7 +7,7 @@
 
 <div id="alert-box"></div>
 
-        @helper.form(action = routes.SignUpController.create) {
+        @helper.form(action = routes.SignUpController.isUsernameExists) {
 
         @inputText(
             personSignUpForm("name"),
@@ -38,32 +38,32 @@
 
     }
 <script type="text/javascript">
-  var successFn = function(data) {
-   if(data == "true"){
-	   $('#alert-box').html('');
-	   $("#alert-box").append('<div class="alert alert-error">' + '<a class="close" data-dismiss="alert">×</a>  ' +
-			   '<strong>Error!</strong>username Already exist ! '+ '</div>');
-   }
-   else{
-	   $('#alert-box').html('');
-	   $("#alert-box").append('<div class="alert alert-success">' + '<a class="close" data-dismiss="alert">×</a>  ' +
-			   '<strong>Success!</strong>Valid username ! '+ '</div>');
-	   }
-   console.debug("Success of Ajax Call");
-   console.debug(data);
-  };
-  var errorFn = function(err) {
-   console.debug("Error of ajax Call");
-   console.debug(err);
-  }
+  <!--var successFn = function(data) {-->
+   <!--if(data == "true"){-->
+	   <!--$('#alert-box').html('');-->
+	   <!--$("#alert-box").append('<div class="alert alert-error">' + '<a class="close" data-dismiss="alert">×</a>  ' +-->
+			   <!--'<strong>Error!</strong>username Already exist ! '+ '</div>');-->
+   <!--}-->
+   <!--else{-->
+	   <!--$('#alert-box').html('');-->
+	   <!--$("#alert-box").append('<div class="alert alert-success">' + '<a class="close" data-dismiss="alert">×</a>  ' +-->
+			   <!--'<strong>Success!</strong>Valid username ! '+ '</div>');-->
+	   <!--}-->
+   <!--console.debug("Success of Ajax Call");-->
+   <!--console.debug(data);-->
+  <!--};-->
+  <!--var errorFn = function(err) {-->
+   <!--console.debug("Error of ajax Call");-->
+   <!--console.debug(err);-->
+  <!--}-->
 
-  ajax1 = {
-    success: successFn,
-    error: errorFn
-  }
+  <!--ajax1 = {-->
+    <!--success: successFn,-->
+    <!--error: errorFn-->
+  <!--}-->
 
-<!--jsRoutes.controllers.SignUpControllers.isUsername(idToGet)-->
+<!--jsRoutes.controllers.SignUpController.isUsernameExists(idToGet)-->
 <!--.ajax(ajax1);-->
-}
+<!--}-->
   </script>
 

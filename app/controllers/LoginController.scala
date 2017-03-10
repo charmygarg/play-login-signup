@@ -3,7 +3,7 @@ package controllers
 import javax.inject.Inject
 import models.Person
 import play.api.cache.CacheApi
-import play.api.routing._
+
 import play.api.mvc.{Action, Controller}
 import services.MD5
 import views.html.helper.javascriptRouter
@@ -30,13 +30,5 @@ class LoginController @Inject() (cache: CacheApi) extends Controller{
           case None =>  Ok(views.html.index()).flashing("success" -> "Not a valid User")
         }
       })
-  }
-
-  def javascriptRoutes = Action { implicit request =>
-    Ok(
-      javascriptRouter("jsRoutes")(
-        controllers.routes.javascript.LoginController.create
-      )
-    ).as(JAVASCRIPT)
   }
 }
