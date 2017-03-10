@@ -1,4 +1,4 @@
 package models
 
-case class Person(name: String, username: String, password: String)
+case class Person(name: String, username: String, password: String, confirmPassword: String)
 

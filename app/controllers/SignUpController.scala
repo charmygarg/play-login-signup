@@ -1,6 +1,7 @@
 package controllers
 
 import javax.inject.Inject
+import models.Person
 import play.api.mvc.{Action, Controller}
 import play.api.routing._
 import routes.javascript._
@@ -14,25 +15,15 @@ class SignUpController @Inject() (signUpService: SignUpService) extends Controll
     Ok(views.html.personSignUpForm())
   }
 
-//  def create = Action { implicit request =>
-//      map.personSignUpForm.bindFromRequest.fold(
-//        formWithErrors => Ok("value" + formWithErrors),
-//        value => {
-//          signUpService.setCache(value)
-//          Ok(views.html.profile(value.name,value.username,value.password)).withSession(request.session + ("userSession" -> s"${value.username}"))
-//        })
-//    }
-
-  def isUsernameExists() = Action { implicit request =>
-    Ok(views.html.personSignUpForm())
-  }
-
-  def javascriptRoutes = Action { implicit request =>
-    Ok(
-      JavaScriptReverseRouter("jsRoutes")(
-          routes.javascript.SignUpController.isUsernameExists
-      )
-    ).as("text/javascript")
+  def signUpAction(name: String, username: String, password: String, confirmPassword: String) = Action { implicit request =>
+    if(password == confirmPassword) {
+      val data = Person(name, username, password, confirmPassword)
+      signUpService.setCache(data)
+      Ok(views.html.profile(name, username, password))
+    }
+    else {
+      Ok("Password doesn't match")
+    }
   }
 
 }

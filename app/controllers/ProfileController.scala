@@ -11,9 +11,9 @@ class ProfileController @Inject() (cache: CacheApi) extends Controller {
     val usrname = request.session.get("userSession").fold("fake")(x => x)
     val user = cache.get[Person](usrname)
     user match {
-      case Some(Person(name, username, password)) =>
+      case Some(Person(name, username, password, confirmPassword)) =>
         Ok(views.html.profile(name, username, password))
-      case None => Ok(views.html.index()).flashing("success" -> "Please login")
+      case None => Ok(views.html.login()).flashing("success" -> "Please login")
     }
   }
 
